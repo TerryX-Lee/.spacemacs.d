@@ -27,11 +27,12 @@ values."
    ;; If non-nil layers with lazy install support are lazy installed.
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
-   dotspacemacs-configuration-layer-path '()
+   dotspacemacs-configuration-layer-path '("~/.spacemacs.d/layer/")
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     python
+     ;; python
+     elpy
      c-c++
      javascript
      ;; ----------------------------------------------------------------
@@ -323,6 +324,9 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (add-hook 'prog-mode-hook 'hightlight-indent-guides-mode)
 
   (global-company-mode)
+
+  (setq python-shell-interpreter "ipython"
+        python-shell-interpreter-args "-i --simple-prompt")
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration.
