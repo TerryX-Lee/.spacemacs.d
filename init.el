@@ -327,6 +327,15 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   (setq python-shell-interpreter "ipython"
         python-shell-interpreter-args "-i --simple-prompt")
+
+  ;; set dired to use only one buffer.
+  (put 'dired-find-alternate-file 'disabled nil)
+  ;; 主动加载 Dired Mode
+  ;; (require 'dired)
+  ;; (defined-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
+  ;; 延迟加载
+  (with-eval-after-load 'dired
+      (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file))
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration.
